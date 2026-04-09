@@ -1,3 +1,6 @@
+def test_first_try():
+    print("Hello World!")
+    
 def test_user_login():
     print('Hello!')
 
