@@ -1,0 +1,5 @@
+авторизуешься кодом, внутри этого with sync_playwright. пишешь строку:
+context.storage_state(path='/Desktop/MyPath')
+
+а потом когда делаешь в том же файле новый with sync:
+context=browser.new_context(storage_state='/Desktop/MyPath')

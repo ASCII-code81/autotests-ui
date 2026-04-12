@@ -1,0 +1,6 @@
+@pytest.mark.skip(reason='sadasdas') чтобы пропустить тест. а 
+@pytest.mark.skipif(
+    x = 2
+)
+чтобы пропустить по условию
+reason это тока коментарий.
