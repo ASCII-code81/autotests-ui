@@ -1,12 +1,15 @@
-from playwright.sync_api import Page, expect
-from elements.text import Text
+from playwright.sync_api import Page
+
+from components.base_component import BaseComponent
+from components.courses.course_view_menu_component import CourseViewMenuComponent
 from elements.image import Image
-from components.base_component import BaseComponent 
-from components.courses.course_view_menu_component import CourseViewMenuComponent 
+from elements.text import Text
+
 
 class CourseViewComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
+
         self.menu = CourseViewMenuComponent(page)
 
         self.title = Text(page, 'course-widget-title-text', 'Title')
@@ -16,11 +19,12 @@ class CourseViewComponent(BaseComponent):
         self.estimated_time_text = Text(page, 'course-estimated-time-info-row-view-text', 'Estimated time')
 
     def check_visible(self, index: int, title: str, max_score: str, min_score: str, estimated_time: str):
+        # Используем nth=index для поиска элементов по индексу
         self.image.check_visible(nth=index)
 
         self.title.check_visible(nth=index)
         self.title.check_have_text(title, nth=index)
-        
+
         self.max_score_text.check_visible(nth=index)
         self.max_score_text.check_have_text(f"Max score: {max_score}", nth=index)
 
