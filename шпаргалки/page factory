@@ -1,0 +1,2 @@
+**kwargs в скобках дает вписывать потом значение как словарь. ну как id="login-button"
+page factory->page component->page object вот так вот пиши тесты ну и ферму.
