@@ -10,7 +10,7 @@ def chromium_page(playwright: Playwright, request) -> Page:
     videos_dir.mkdir(exist_ok=True)
     traces_dir.mkdir(exist_ok=True)
 
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context(record_video_dir=str(videos_dir))
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
@@ -25,7 +25,7 @@ def chromium_page(playwright: Playwright, request) -> Page:
  
 @pytest.fixture(scope="session")
 def initialize_browser_state(playwright: Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
  
@@ -54,7 +54,7 @@ def chromium_page_with_state(initialize_browser_state, playwright: Playwright, r
     videos_dir.mkdir(exist_ok=True)
     traces_dir.mkdir(exist_ok=True)
 
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context(
         storage_state="browser-state.json",
         record_video_dir=str(videos_dir)
