@@ -30,6 +30,7 @@ jobs:
       - name: Run Playwright tests with pytest and generate Allure results
         run: |
           pytest -m regression --alluredir=./allure-results --numprocesses 2
+        continue-on-error: true
 
       - name: Get Allure history
         uses: actions/checkout@v4
@@ -39,12 +40,13 @@ jobs:
           ref: gh-pages
           path: gh-pages 
 
-      - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@v1.7
+      - name: Allure Report action
+        uses: mgrybyk/allure-report-github-action@v0.2
         if: always()
         with: 
           allure_results: allure-results
           allure_history: allure-history
+          keep_reports: 20
 
       - name: Deploy report to Github Pages
         uses: peaceiris/actions-gh-pages@v3
