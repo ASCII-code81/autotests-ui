@@ -16,3 +16,9 @@ test-results/
 playwright-report/
 blob-report/
 *.html
+
+#coverage
+coverage.html
+coverage-results
+coverage-report.json 
+coverage-history.json
