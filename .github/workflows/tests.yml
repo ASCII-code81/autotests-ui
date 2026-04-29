@@ -32,7 +32,7 @@ jobs:
           pytest -m regression --alluredir=allure-results --numprocesses 2
 
       - name: Restore Coverage history
-        uses: actions/cache/restore@v5.05
+        uses: actions/cache/restore@v5
         with:
           path: coverage-history.json
           key: coverage-history-${{ github.run_id }} 
@@ -52,14 +52,14 @@ jobs:
       
       - name: Upload Coverage results
         if: always()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage.html
 
       - name: Upload Allure results
         if: always()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
@@ -78,7 +78,7 @@ jobs:
           path: gh-pages
 
       - name: Download Allure results
-        uses: actions/download-artifact@v8.0.1
+        uses: actions/download-artifact@v4
         with:
           name: allure-results
           path: allure-results
